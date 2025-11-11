@@ -13,7 +13,7 @@ const ChatRoom = ({ roomId }: { roomId: string }) => {
   useEffect(() => {
     const ws = new WebSocket("wss://randomchat-hivj.onrender.com");
     wsRef.current = ws;
-
+ 
     ws.onopen = () => {
       console.log("Connected to server, joining room:", roomId);
       ws.send(JSON.stringify({ type: "join", payload: { roomId } }));
