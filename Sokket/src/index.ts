@@ -1,5 +1,8 @@
 import { WebSocketServer, WebSocket } from "ws";
 import http from "http"
+import dotenv from "dotenv"
+
+dotenv.config();
 
 interface User {
   slug: string;
@@ -20,6 +23,9 @@ const server = http.createServer();
 
 const wss = new WebSocketServer({ server });
 const sockets = new Map<WebSocket, User>();
+
+
+let PORT = Number(process.env.PORT) || 8080
 
 wss.on("connection", (socket : WebSocket) => {
   console.log(" Client connected");
@@ -128,6 +134,6 @@ wss.on("connection", (socket : WebSocket) => {
 });
 
 
-server.listen(8080, "0.0.0.0", () => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log("✅ Server started on port 8080");
 });
