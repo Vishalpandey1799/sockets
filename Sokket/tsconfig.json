@@ -14,6 +14,7 @@
     // "lib": ["esnext"],
     "types": ["node" , "ws"],
     // and npm install -D @types/node
+    "typeRoots": ["./node_modules/@types"],
 
     // Other Outputs
     "sourceMap": true,
