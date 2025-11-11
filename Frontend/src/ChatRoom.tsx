@@ -11,7 +11,7 @@ const ChatRoom = ({ roomId }: { roomId: string }) => {
   const wsRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("wss://chatapp-f6zr.onrender.com");
+    const ws = new WebSocket("wss://randomchat-hivj.onrender.com");
     wsRef.current = ws;
 
     ws.onopen = () => {
