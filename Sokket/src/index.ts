@@ -21,7 +21,7 @@ const server = http.createServer();
 const wss = new WebSocketServer({ server });
 const sockets = new Map<WebSocket, User>();
 
-wss.on("connection", (socket) => {
+wss.on("connection", (socket : WebSocket) => {
   console.log(" Client connected");
 
   socket.send(
@@ -31,7 +31,7 @@ wss.on("connection", (socket) => {
     })
   );
 
-  socket.on("message", (raw) => {
+  socket.on("message", (raw : Buffer) => {
     try {
       const msg = JSON.parse(raw.toString());
       const user = sockets.get(socket);
@@ -128,6 +128,6 @@ wss.on("connection", (socket) => {
 });
 
 
-server.listen(8080 , () =>{
-    console.log("Server started on port 8080");
-})
+server.listen(8080, "0.0.0.0", () => {
+  console.log("✅ Server started on port 8080");
+});
